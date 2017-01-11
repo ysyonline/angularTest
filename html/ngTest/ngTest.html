@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="testApp">
+<head>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+</head>
+<body ng-controller="testController">  <!-- 定义 testController 控制器 -->
+    <span ng-show="isShow">showButton</span><input type="button" value="clickMe!" ng-click="fn1()"/></br>
+    <span ng-hide="isHide">hideButton</span><input type="button" value="clickMe!" ng-click="fn2()"/></br>
+    <!-- test ng-disabled -->
+    <input type="checkbox" checked="false" ng-disabled="isDisabled" />
+    <input type="button" value="clickMe!" ng-click="fn3()"/>
+</body>
+<script>
+    var app = angular.module( 'testApp',[] );
+
+    app.controller( 'testController', function( $scope ){ //创建 名叫testController的js对象-->作为控制器，并且调用该控制器。
+        $scope.isShow = true;
+        $scope.isHide = true;
+        $scope.isDisabled = true;
+        $scope.fn1 = function(){
+            $scope.isShow = !$scope.isShow;
+        };
+        $scope.fn2 = function(){
+            $scope.isHide = !$scope.isHide;
+        };
+        $scope.fn3 = function(){
+            $scope.isDisabled = !$scope.isDisabled;
+        };
+
+
+    });
+</script>
+</html>
